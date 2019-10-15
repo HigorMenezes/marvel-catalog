@@ -6,7 +6,7 @@ import { Container } from './styles';
 
 const CharacterCatalog = () => (
   <Container>
-    <CardLoader />
+    <CardLoader offset={5} />
   </Container>
 );
 
