@@ -4,6 +4,9 @@ const theme = {
   },
   color: {
     red: '#ec1d24',
+    white: '#fefefe',
+    black: '#040404',
+    lightGrey: '#efefef',
   },
 };
 
