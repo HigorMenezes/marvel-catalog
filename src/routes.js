@@ -6,6 +6,7 @@ const Router = () => (
   <BrowserRouter>
     <Switch>
       <Route path="/" exact component={CharacterCatalog} />
+      <Route path="/:search" component={CharacterCatalog} />
       <Route path="/detail" component={CharacterDetail} />
       <Route path="/edit" component={CharacterEdit} />
     </Switch>

@@ -6,8 +6,12 @@ import { Container } from './styles';
 
 const AppLayout = () => (
   <Container>
-    <Navbar />
-    <Routes />
+    <div className="navbar">
+      <Navbar />
+    </div>
+    <div className="content">
+      <Routes />
+    </div>
   </Container>
 );
 
