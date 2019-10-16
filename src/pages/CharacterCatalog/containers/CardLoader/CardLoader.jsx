@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 
 import { GET_ALL_CHARACTERS } from './queries';
@@ -10,8 +10,6 @@ import {
 import { Container } from './styles';
 
 const CardLoader = ({ offset, search }) => {
-  const [noMoreData, setNoMoreData] = useState(false);
-
   const variables = {
     offset,
     limit: 0,
@@ -33,16 +31,10 @@ const CardLoader = ({ offset, search }) => {
         offset,
         limit: data.characters.length,
       },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (fetchMoreResult.characters.length === 0) {
-          setNoMoreData(true);
-          return prev;
-        }
-        return {
-          ...prev,
-          characters: [...prev.characters, ...fetchMoreResult.characters],
-        };
-      },
+      updateQuery: (prev, { fetchMoreResult }) => ({
+        ...prev,
+        characters: [...prev.characters, ...fetchMoreResult.characters],
+      }),
     });
   }
 
@@ -64,7 +56,6 @@ const CardLoader = ({ offset, search }) => {
         {loading ? (
           <Loading />
         ) : (
-          !noMoreData &&
           data &&
           data.characters &&
           data.characters.length > 0 && (
