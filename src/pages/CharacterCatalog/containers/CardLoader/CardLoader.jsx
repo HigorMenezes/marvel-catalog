@@ -1,34 +1,79 @@
-import React, { useState, useEffect } from 'react';
-import { gql } from 'apollo-boost';
-import { marvelql } from '../../../../api';
+import React, { useState } from 'react';
+import { useQuery } from '@apollo/react-hooks';
 
-import { CharacterCard } from '../../../../components';
+import { GET_ALL_CHARACTERS } from './queries';
+import {
+  CharacterCard,
+  FetchMoreDataButton,
+  Loading,
+} from '../../../../components';
 import { Container } from './styles';
 
-const CardLoader = () => {
-  const [characters, setCharacters] = useState([]);
+const CardLoader = ({ offset, search }) => {
+  const [noMoreData, setNoMoreData] = useState(false);
 
-  useEffect(() => {
-    marvelql
-      .query({
-        query: gql`
-          {
-            characters {
-              id
-              thumbnail
-              name
-            }
-          }
-        `,
-      })
-      .then(({ data }) => setCharacters(data.characters));
-  }, []);
+  const variables = {
+    offset,
+    limit: 0,
+  };
+  if (search) {
+    variables.where = {
+      nameStartsWith: search,
+    };
+  }
+
+  const { data, fetchMore, loading } = useQuery(GET_ALL_CHARACTERS, {
+    variables,
+    notifyOnNetworkStatusChange: true,
+  });
+
+  function handleFetchMoreData() {
+    fetchMore({
+      variables: {
+        offset,
+        limit: data.characters.length,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (fetchMoreResult.characters.length === 0) {
+          setNoMoreData(true);
+          return prev;
+        }
+        return {
+          ...prev,
+          characters: [...prev.characters, ...fetchMoreResult.characters],
+        };
+      },
+    });
+  }
 
   return (
     <Container>
-      {characters.map(({ name, thumbnail, id }) => (
-        <CharacterCard key={id} name={name} thumbnail={thumbnail} />
-      ))}
+      <div className="card-characters-list">
+        {data &&
+          data.characters &&
+          data.characters.map(({ name, thumbnail, id }) => (
+            <CharacterCard key={id} name={name} thumbnail={thumbnail} />
+          ))}
+        {!loading &&
+          data &&
+          data.characters &&
+          data.characters.length === 0 && <p>No data found</p>}
+      </div>
+
+      <div className="fetch-more-data-box">
+        {loading ? (
+          <Loading />
+        ) : (
+          !noMoreData &&
+          data &&
+          data.characters &&
+          data.characters.length > 0 && (
+            <FetchMoreDataButton type="button" onClick={handleFetchMoreData}>
+              Fetch more data
+            </FetchMoreDataButton>
+          )
+        )}
+      </div>
     </Container>
   );
 };
