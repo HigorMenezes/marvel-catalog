@@ -1,12 +1,11 @@
 import React from 'react';
-import { FiEye, FiEdit } from 'react-icons/fi';
 
 import { Container } from './styles';
 
-const CharacterCard = ({ name, thumbnail }) => (
+const CharacterCard = ({ name, thumbnail, onCLick }) => (
   <Container>
     <div className="card">
-      <div className="card-image">
+      <div className="card-image" onClick={onCLick}>
         <div
           className="image"
           style={{
@@ -17,14 +16,6 @@ const CharacterCard = ({ name, thumbnail }) => (
       <div className="card-header">
         <header className="header">{name}</header>
       </div>
-      <nav className="card-nav">
-        <span className="icon-box">
-          <FiEye className="icon" />
-        </span>
-        <span className="icon-box">
-          <FiEdit className="icon" />
-        </span>
-      </nav>
     </div>
   </Container>
 );
