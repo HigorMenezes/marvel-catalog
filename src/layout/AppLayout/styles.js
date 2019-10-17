@@ -10,7 +10,7 @@ export const Container = styled.div`
   }
 
   .content {
-    padding: 2rem;
+    padding: 0.5rem;
     padding-top: ${props => props.theme.navbar.height};
   }
 `;

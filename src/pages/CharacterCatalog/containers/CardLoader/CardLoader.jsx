@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
+import { useHistory } from 'react-router-dom';
 
 import { GET_ALL_CHARACTERS } from './queries';
 import {
@@ -10,6 +11,8 @@ import {
 import { Container } from './styles';
 
 const CardLoader = ({ offset, search }) => {
+  const history = useHistory();
+
   const variables = {
     offset,
     limit: 0,
@@ -38,6 +41,13 @@ const CardLoader = ({ offset, search }) => {
     });
   }
 
+  function handleClickCard(id) {
+    history.push({
+      pathname: '/edit',
+      search: String(new URLSearchParams({ character_id: id })),
+    });
+  }
+
   return (
     <Container>
       <div className="card-characters-list">
@@ -45,7 +55,11 @@ const CardLoader = ({ offset, search }) => {
           data.characters &&
           data.characters.map(({ name, thumbnail, id }) => (
             <div key={id} className="character-card">
-              <CharacterCard name={name} thumbnail={thumbnail} />
+              <CharacterCard
+                name={name}
+                thumbnail={thumbnail}
+                handleClickCard={() => handleClickCard(id)}
+              />
             </div>
           ))}
         {!loading &&
