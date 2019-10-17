@@ -4,9 +4,7 @@ import { Container } from './styles';
 
 const Loading = () => (
   <Container>
-    <div />
-    <div />
-    <div />
+    <div className="loader" />
   </Container>
 );
 

@@ -1,30 +1,45 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
-  justify-content: center;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  z-index: 6000;
 
-  div {
-    width: 1rem;
-    height: 1rem;
-    margin: 2rem 0.3rem;
-    background: ${props => props.theme.color.red};
-    border-radius: 50%;
-    animation: 0.9s bounce infinite alternate;
+  width: 100%;
+  height: 0.4rem;
+  background-color: ${props => props.theme.color.white};
 
-    &:nth-child(2) {
-      animation-delay: 0.3s;
-    }
-
-    &:nth-child(3) {
-      animation-delay: 0.6s;
-    }
+  .loader {
+    width: 100%;
+    height: 100%;
+    background-color: ${props => props.theme.color.red};
+    animation: loader 5s;
   }
 
-  @keyframes bounce {
-    to {
-      opacity: 0.3;
-      transform: translate3d(0, -1rem, 0);
+  @keyframes loader {
+    0% {
+      width: 0%;
+    }
+    10% {
+      width: 20%;
+    }
+    20% {
+      width: 25%;
+    }
+    30% {
+      width: 60%;
+    }
+    40% {
+      width: 90%;
+    }
+
+    90% {
+      width: 95%;
+    }
+
+    100% {
+      width: 98%;
     }
   }
 `;

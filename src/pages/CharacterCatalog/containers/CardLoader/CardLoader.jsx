@@ -44,7 +44,9 @@ const CardLoader = ({ offset, search }) => {
         {data &&
           data.characters &&
           data.characters.map(({ name, thumbnail, id }) => (
-            <CharacterCard key={id} name={name} thumbnail={thumbnail} />
+            <div key={id} className="character-card">
+              <CharacterCard name={name} thumbnail={thumbnail} />
+            </div>
           ))}
         {!loading &&
           data &&

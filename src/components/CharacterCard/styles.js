@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import media from 'styled-media-query';
 
 export const Container = styled.div`
   width: 100%;
@@ -98,12 +97,4 @@ export const Container = styled.div`
       }
     }
   }
-
-  ${media.greaterThan('medium')`
-    width: 50%;
-  `}
-
-  ${media.greaterThan('large')`
-    width: 25%;
-  `}
 `;

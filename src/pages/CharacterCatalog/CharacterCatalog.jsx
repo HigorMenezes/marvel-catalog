@@ -1,14 +1,17 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { CardLoader } from './containers';
 
 import { Container } from './styles';
 
 const CharacterCatalog = () => {
-  const { search } = useParams();
+  const { search } = useLocation();
   return (
     <Container>
-      <CardLoader offset={8} search={search} />
+      <CardLoader
+        offset={10}
+        search={new URLSearchParams(search).get('search_query')}
+      />
     </Container>
   );
 };
