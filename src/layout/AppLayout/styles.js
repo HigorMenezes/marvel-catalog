@@ -10,6 +10,9 @@ export const Container = styled.div`
   }
 
   .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0.5rem;
     padding-top: ${props => props.theme.navbar.height};
   }

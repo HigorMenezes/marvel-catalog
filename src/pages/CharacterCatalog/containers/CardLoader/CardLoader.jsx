@@ -43,7 +43,7 @@ const CardLoader = ({ offset, search }) => {
 
   function handleClickCard(id) {
     history.push({
-      pathname: '/edit',
+      pathname: '/details',
       search: String(new URLSearchParams({ character_id: id })),
     });
   }
