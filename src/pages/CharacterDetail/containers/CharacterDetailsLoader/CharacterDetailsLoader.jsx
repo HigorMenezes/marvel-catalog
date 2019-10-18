@@ -1,42 +1,85 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 
-import { GET_CHARACTER_BY_ID } from './queries';
+import { GET_CHARACTER_BY_ID, GET_SERIES_BY_CHARACTER_ID } from './queries';
 
-import { Loading } from '../../../../components';
+import { Loading, Typography } from '../../../../components';
 
 import { Container } from './styles';
 
 const CharacterDetailsLoader = ({ characterId }) => {
   const [character, setCharacter] = useState({});
-  const { loading } = useQuery(GET_CHARACTER_BY_ID, {
+  const [seriesList, setSeriesList] = useState([]);
+
+  const { loading: characterLoading } = useQuery(GET_CHARACTER_BY_ID, {
     variables: {
       where: { id: characterId },
     },
     notifyOnNetworkStatusChange: true,
-    onCompleted: ({ characters }) => {
-      setCharacter(characters[0]);
+    onCompleted: ({ characters: charactersResult }) => {
+      setCharacter(charactersResult[0]);
     },
   });
 
+  const { loading: seriesLoading, fetchMore } = useQuery(
+    GET_SERIES_BY_CHARACTER_ID,
+    {
+      variables: {
+        where: { characters: [characterId] },
+      },
+      notifyOnNetworkStatusChange: true,
+      onCompleted: ({ series: seriesResult }) => {
+        setSeriesList(seriesResult);
+      },
+    }
+  );
+
   return (
     <Container>
-      {loading && <Loading />}
+      {(characterLoading || seriesLoading) && <Loading />}
       <div className="character-detail-container">
         <div className="character-header">
           <span className="header">{character.name || ''}</span>
         </div>
         <div className="character-thumbnail">
-          <div
+          <img
             className="thumbnail"
-            style={{ backgroundImage: `url(${character.thumbnail || ''})` }}
+            // style={{ backgroundImage: `url(${character.thumbnail || ''})` }}
+            src={character.thumbnail}
+            alt={character.name}
           />
         </div>
-        <div className="character-description">
-          <p className="description">
-            {character.description ||
-              'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.'}
-          </p>
+        <div className="character-content">
+          <div className="character-description">
+            <Typography variant="h2">Description</Typography>
+            <p className="description">
+              {character.description || 'No character description found'}
+            </p>
+          </div>
+          <div className="character-series">
+            <Typography variant="h2">Series</Typography>
+            {seriesList.map(({ id, title, thumbnail, description }) => (
+              <div key={id} className="series-container">
+                <div className="series-thumbnail-container">
+                  <img
+                    className="series-thumbnail"
+                    src={thumbnail}
+                    alt={title}
+                  />
+                </div>
+                <div className="series-content">
+                  <div className="title">
+                    <Typography variant="h3">
+                      {title || 'No series title found'}
+                    </Typography>
+                  </div>
+                  <div className="description">
+                    <p>{description || 'No series description found'}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Container>

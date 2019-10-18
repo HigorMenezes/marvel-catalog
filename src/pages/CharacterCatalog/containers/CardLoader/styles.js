@@ -32,7 +32,7 @@ export const Container = styled.div`
         width: 50%;
       }
     }
-  `}
+  `};
 
   ${media.greaterThan('large')`
     .card-characters-list {
@@ -40,7 +40,7 @@ export const Container = styled.div`
         width: 25%;
       }
     }
-  `}
+  `};
 
   ${media.greaterThan('huge')`
     .card-characters-list {
@@ -48,5 +48,5 @@ export const Container = styled.div`
         width: 20%;
       }
     }
-  `}
+  `};
 `;

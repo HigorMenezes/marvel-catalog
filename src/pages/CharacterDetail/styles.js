@@ -7,17 +7,15 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-
   ${media.greaterThan('medium')`
     width: 80%;
-  `}
+  `};
 
   ${media.greaterThan('large')`
     width: 70%;
-  `}
+  `};
 
   ${media.greaterThan('huge')`
     width: 60%;
-  `}
-
+  `};
 `;
