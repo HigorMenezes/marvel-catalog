@@ -19,7 +19,10 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
+      background-color: ${props => props.theme.color.white};
+      padding: 1rem;
+      box-shadow: 0.1rem 0.1rem 0.5rem 0.2rem rgba(0, 0, 0, 0.06),
+        0.1rem 0.2rem 1.5rem 0.2rem rgba(0, 0, 0, 0.2);
 
       .series-thumbnail {
         width: 100%;
@@ -38,9 +41,8 @@ export const Container = styled.div`
   }
 
   ${media.greaterThan('medium')`
-    .series-thumbnail-container .series-thumbnail {
-      width: 75% !important;
-      height: 75% !important;
+    .series-thumbnail-container {
+      width: 75%;
     }
   `};
 `;

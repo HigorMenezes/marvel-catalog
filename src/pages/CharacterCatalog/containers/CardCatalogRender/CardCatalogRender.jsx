@@ -33,7 +33,7 @@ const CardCatalogRender = ({
     <div className="fetch-more-data-box">
       {thereAreMoreCharacters && !loading && characters.length > 0 && (
         <FetchMoreDataButton type="button" onClick={handleFetchMoreCharacters}>
-          Fetch more data
+          Fetch more characters
         </FetchMoreDataButton>
       )}
     </div>

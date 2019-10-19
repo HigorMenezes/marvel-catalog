@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-
 import { GET_CHARACTER_BY_ID, GET_SERIES_BY_CHARACTER_ID } from './queries';
 import CharacterDetailsRender from '../CharacterDetailsRender';
 import { Container } from './styles';
 
 const CharacterDetailsLoader = ({ characterId }) => {
+  const history = useHistory();
   const [thereAreMoreSeries, setThereAreMoreSeries] = useState(true);
   const { data: characterData, loading: characterLoading } = useQuery(
     GET_CHARACTER_BY_ID,
@@ -48,6 +49,13 @@ const CharacterDetailsLoader = ({ characterId }) => {
     });
   }
 
+  function handleEditCharacter(id) {
+    history.push({
+      pathname: '/edit',
+      search: String(new URLSearchParams({ character_id: id })),
+    });
+  }
+
   return (
     <Container>
       <CharacterDetailsRender
@@ -58,6 +66,7 @@ const CharacterDetailsLoader = ({ characterId }) => {
           characterData.characters[0]
         }
         series={seriesData && seriesData.series}
+        handleEditCharacter={() => handleEditCharacter(characterId)}
         thereAreMoreSeries={thereAreMoreSeries}
         handleFetchMoreSeries={handleFetchMoreSeries}
       />

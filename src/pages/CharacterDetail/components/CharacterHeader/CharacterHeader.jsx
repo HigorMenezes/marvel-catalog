@@ -4,7 +4,7 @@ import { Container } from './styles';
 
 const CharacterHeader = ({ children }) => (
   <Container>
-    <span className="header">{children}</span>
+    <header className="header">{children}</header>
   </Container>
 );
 

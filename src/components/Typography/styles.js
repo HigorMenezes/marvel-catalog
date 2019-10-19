@@ -40,14 +40,13 @@ export const Header4 = styled.h4`
   font-size: 2rem;
   color: ${props => props.theme.color.black};
   line-height: 1.5;
-  margin-bottom: 1rem;
   font-weight: 700;
   text-align: center;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
 `;
 
 export const Paragraph1 = styled.p`
-  padding: 2rem 0.5rem;
+  padding: 0 0.5 2rem 0.5rem;
   text-align: center;
   word-wrap: break-word;
 `;

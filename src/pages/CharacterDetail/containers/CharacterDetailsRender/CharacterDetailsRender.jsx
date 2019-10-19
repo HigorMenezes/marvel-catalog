@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Loading,
   Typography,
@@ -10,6 +9,7 @@ import {
   CharacterThumbnail,
   CharacterDescription,
   CharacterSeries,
+  CharacterEditButton,
 } from '../../components';
 
 import { Container } from './styles';
@@ -18,12 +18,14 @@ const CharacterDetailsRender = ({
   loading,
   character = {},
   series = [],
+  handleEditCharacter,
   thereAreMoreSeries,
   handleFetchMoreSeries,
 }) => (
   <Container>
     <Loading loading={loading} />
     <div className="character-detail-container">
+      <CharacterEditButton handleEditCharacter={handleEditCharacter} />
       <CharacterHeader>{character.name || ''}</CharacterHeader>
       <CharacterThumbnail
         thumbnail={character.thumbnail}
@@ -51,7 +53,7 @@ const CharacterDetailsRender = ({
                 type="button"
                 onClick={handleFetchMoreSeries}
               >
-                Fetch more data
+                Fetch more series
               </FetchMoreDataButton>
             )}
           </div>
