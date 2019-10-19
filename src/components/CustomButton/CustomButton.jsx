@@ -8,8 +8,14 @@ const CustomButton = ({
   handleClick,
   buttonType,
   buttonDisabled,
+  className,
 }) => (
-  <Container type={buttonType} disabled={buttonDisabled} onClick={handleClick}>
+  <Container
+    type={buttonType}
+    disabled={buttonDisabled}
+    onClick={handleClick}
+    className={className}
+  >
     {children}
   </Container>
 );

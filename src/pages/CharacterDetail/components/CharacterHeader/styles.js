@@ -8,13 +8,11 @@ export const Container = styled.div`
   padding: 0.5rem;
 
   .header {
+    width: 100%;
     font-size: 4.4rem;
     text-transform: uppercase;
-    letter-spacing: 1rem;
     font-weight: 700;
-    text-align: center;
-    padding: 1rem;
-    margin-bottom: 2rem;
+    padding: 1rem 2rem;
     line-height: 1.2;
   }
 `;

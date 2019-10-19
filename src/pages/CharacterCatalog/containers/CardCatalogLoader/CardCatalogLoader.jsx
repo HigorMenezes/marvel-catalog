@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { GET_ALL_CHARACTERS } from './queries';
 import { CharacterCardList } from '../../../../components';
+import { combine } from '../../../../helpers/combineCharacters';
 import { Container } from './styles';
 
 const CardCatalogLoader = ({ offset }) => {
   const history = useHistory();
+  const characters = useSelector(state => state.characters);
   const [thereAreMoreCharacters, setThereAreMoreCharacters] = useState(true);
 
   const {
@@ -50,7 +53,13 @@ const CardCatalogLoader = ({ offset }) => {
   return (
     <Container>
       <CharacterCardList
-        characters={charactersData && charactersData.characters}
+        characters={
+          charactersData &&
+          combine({
+            baseCharacters: charactersData.characters,
+            replaceCharacters: characters.editedCharacters,
+          })
+        }
         loading={charactersLoading}
         handleFetchMoreCharacters={handleFetchMoreCharacters}
         handleClickOnCard={handleClickOnCard}

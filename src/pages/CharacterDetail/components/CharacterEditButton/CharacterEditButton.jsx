@@ -10,9 +10,9 @@ const CharacterEditButton = ({ handleEditCharacter }) => (
       onClick={handleEditCharacter}
     >
       <span className="text">Edit Character</span>
-      <span className="edit-icon-container">
+      <div className="edit-icon-container">
         <FiEdit className="edit-icon" />
-      </span>
+      </div>
     </button>
   </Container>
 );

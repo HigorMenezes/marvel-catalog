@@ -11,9 +11,9 @@ const AppLayout = () => (
       <div className="navbar">
         <Navbar />
       </div>
-      <div className="content">
+      <main className="content">
         <Routes />
-      </div>
+      </main>
     </BrowserRouter>
   </Container>
 );

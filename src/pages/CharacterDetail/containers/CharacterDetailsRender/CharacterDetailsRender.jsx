@@ -9,7 +9,6 @@ import {
   CharacterHeader,
   CharacterDescription,
   CharacterSeries,
-  CharacterEditButton,
 } from '../../components';
 
 import { Container } from './styles';
@@ -25,8 +24,10 @@ const CharacterDetailsRender = ({
   <Container>
     <Loading loading={loading} />
     <div className="character-detail-container">
-      <CharacterEditButton handleEditCharacter={handleEditCharacter} />
-      <CharacterHeader>{character.name || ''}</CharacterHeader>
+      <CharacterHeader handleEditCharacter={handleEditCharacter}>
+        {character.name || ''}
+      </CharacterHeader>
+
       <ThumbnailPreview
         className="thumbnail-preview"
         thumbnailUrl={character.thumbnail}

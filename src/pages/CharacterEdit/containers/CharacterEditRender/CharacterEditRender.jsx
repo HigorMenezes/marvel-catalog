@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
+import { characterSchema } from '../../validations';
+import { Loading } from '../../../../components';
 import { CharacterEditForm } from '../../components';
 import { Container } from './styles';
 
-const CharacterEditRender = ({ loading, character = {} }) => {
+const CharacterEditRender = ({
+  loading,
+  character = {},
+  handleSubmitCharacter,
+  submitWithSuccess,
+}) => {
   const characterFormValues = {
     id: character.id || '',
     name: character.name || '',
@@ -11,29 +18,31 @@ const CharacterEditRender = ({ loading, character = {} }) => {
     thumbnail: character.thumbnail || '',
   };
 
-  function handleSubmitCharacterData(characterData, actions) {
-    console.log(characterData);
-  }
-
   return (
     <Container>
+      <Loading loading={loading} />
       <Formik
         enableReinitialize
         initialValues={characterFormValues}
-        onSubmit={handleSubmitCharacterData}
+        onSubmit={handleSubmitCharacter}
+        validationSchema={characterSchema}
         render={({
           handleSubmit,
           handleChange,
           handleBlur,
           values,
-          isSubmitting,
+          touched,
+          errors,
         }) => (
           <CharacterEditForm
             handleSubmit={handleSubmit}
             handleChange={handleChange}
             handleBlur={handleBlur}
             values={values}
-            isSubmitting={isSubmitting}
+            touched={touched}
+            errors={errors}
+            loading={loading}
+            submitWithSuccess={submitWithSuccess}
           />
         )}
       />

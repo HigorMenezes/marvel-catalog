@@ -9,6 +9,8 @@ const theme = {
     lightGrey: '#efefef',
     grey: '#999999',
     darkGrey: '#595959',
+    success: '#44ba44',
+    error: '#f84c4c',
   },
 };
 

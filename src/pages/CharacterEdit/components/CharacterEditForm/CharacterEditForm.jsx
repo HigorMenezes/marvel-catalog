@@ -3,6 +3,8 @@ import {
   FormInput,
   CustomButton,
   ThumbnailPreview,
+  Typography,
+  SuccessCard,
 } from '../../../../components';
 import { Container } from './styles';
 
@@ -11,10 +13,13 @@ const CharacterEditForm = ({
   handleChange,
   handleBlur,
   values,
-  isSubmitting,
+  loading,
+  touched,
+  errors,
+  submitWithSuccess,
 }) => (
   <Container>
-    <form onSubmit={handleSubmit} className="form">
+    <form onSubmit={handleSubmit} className="form-controller">
       <FormInput
         variant="input"
         label="Character Name"
@@ -23,8 +28,10 @@ const CharacterEditForm = ({
         handleChange={handleChange}
         handleBlur={handleBlur}
         inputValue={values.name}
+        inputDisabled={loading}
         name="name"
         inputPlaceholder="Insert the character name"
+        errorMessage={touched.name && errors.name}
       />
       <FormInput
         variant="textarea"
@@ -35,8 +42,10 @@ const CharacterEditForm = ({
         handleChange={handleChange}
         handleBlur={handleBlur}
         inputValue={values.description}
+        inputDisabled={loading}
         name="description"
         inputPlaceholder="Insert the character description"
+        errorMessage={touched.description && errors.description}
       />
       <FormInput
         variant="input"
@@ -46,17 +55,25 @@ const CharacterEditForm = ({
         handleChange={handleChange}
         handleBlur={handleBlur}
         inputValue={values.thumbnail}
+        inputDisabled={loading}
         name="thumbnail"
         inputPlaceholder="Insert the character thumbnail url"
+        errorMessage={touched.thumbnail && errors.thumbnail}
       />
+      <CustomButton
+        buttonType="submit"
+        buttonDisabled={loading}
+        className="save-button"
+      >
+        Save
+      </CustomButton>
+      {submitWithSuccess && <SuccessCard>submit successfully</SuccessCard>}
+      <Typography variant="h4">Thumbnail Preview</Typography>
       <ThumbnailPreview
         className="thumbnail-preview"
         thumbnailUrl={values.thumbnail}
         alt={`${values.name} thumbnail`}
       />
-      <CustomButton buttonType="submit" disabled={isSubmitting}>
-        Save
-      </CustomButton>
     </form>
   </Container>
 );

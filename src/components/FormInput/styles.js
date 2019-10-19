@@ -11,6 +11,17 @@ export const Container = styled.div`
     width: 100%;
     font-size: 1.6rem;
     margin: 0.5rem 0rem;
+
+    .input-error {
+      border: 0.2rem solid ${props => props.theme.color.error};
+    }
+
+    .error-message {
+      color: ${props => props.theme.color.error};
+      font-weight: 700;
+      font-size: 1.4rem;
+      padding: 0rem 2rem;
+    }
   }
 `;
 
@@ -30,6 +41,10 @@ export const Input = styled.input`
 
   &:focus {
     border: 0.1rem solid ${props => props.theme.color.black};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 `;
 
@@ -51,5 +66,9 @@ export const TextArea = styled.textarea`
 
   &:focus {
     border: 0.1rem solid ${props => props.theme.color.black};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 `;

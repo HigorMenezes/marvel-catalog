@@ -8,3 +8,5 @@ export { default as Typography } from './Typography';
 export { default as FormInput } from './FormInput';
 export { default as CustomButton } from './CustomButton';
 export { default as ThumbnailPreview } from './ThumbnailPreview';
+export { default as SuccessCard } from './SuccessCard';
+export { default as PageTitle } from './PageTitle';
