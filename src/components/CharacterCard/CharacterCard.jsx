@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Container } from './styles';
 
-const CharacterCard = ({ name, thumbnail, handleClickCard }) => (
+const CharacterCard = ({ name, thumbnail, handleClickOnCard }) => (
   <Container>
-    <div className="card" onClick={handleClickCard}>
+    <div className="card" onClick={handleClickOnCard}>
       <div className="card-image">
         <div
           className="image"

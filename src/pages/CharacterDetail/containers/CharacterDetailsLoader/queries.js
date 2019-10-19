@@ -12,8 +12,8 @@ export const GET_CHARACTER_BY_ID = gql`
 `;
 
 export const GET_SERIES_BY_CHARACTER_ID = gql`
-  query series($where: SeriesWhereInput!) {
-    series(where: $where) {
+  query series($offset: Int!, $limit: Int!, $where: SeriesWhereInput!) {
+    series(offset: $offset, limit: $limit, where: $where) {
       id
       title
       thumbnail
