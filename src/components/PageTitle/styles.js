@@ -6,4 +6,5 @@ export const Container = styled.div`
   vertical-align: center;
   line-height: 1.1;
   font-size: 4rem;
+  margin-top: 2rem;
 `;
