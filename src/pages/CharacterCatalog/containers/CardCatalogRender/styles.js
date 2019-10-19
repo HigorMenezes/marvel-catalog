@@ -27,26 +27,23 @@ export const Container = styled.div`
   }
 
   ${media.greaterThan('medium')`
-    .card-characters-list {
-      .character-card {
+    .card-characters-list .character-card {
         width: 50%;
       }
     }
-  `}
+  `};
 
   ${media.greaterThan('large')`
-    .card-characters-list {
-      .character-card {
+    .card-characters-list .character-card {
         width: 25%;
       }
     }
-  `}
+  `};
 
   ${media.greaterThan('huge')`
-    .card-characters-list {
-      .character-card {
+    .card-characters-list .character-card {
         width: 20%;
       }
     }
-  `}
+  `};
 `;

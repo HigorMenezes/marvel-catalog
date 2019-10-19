@@ -1,1 +1,1 @@
-export { default as CardLoader } from './CardLoader';
+export { default as CardCatalogLoader } from './CardCatalogLoader';

@@ -47,7 +47,7 @@ export const Container = styled.div`
     .search {
       width: 50%;
     }
-  `}
+  `};
 
   ${media.greaterThan('large')`
     .logo-container {
@@ -65,5 +65,5 @@ export const Container = styled.div`
     .search {
       width: 33%;
     }
-  `}
+  `};
 `;
