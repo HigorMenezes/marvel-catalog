@@ -3,13 +3,12 @@ import {
   Loading,
   Typography,
   FetchMoreDataButton,
+  ThumbnailPreview,
 } from '../../../../components';
 import {
   CharacterHeader,
-  CharacterThumbnail,
   CharacterDescription,
   CharacterSeries,
-  CharacterEditButton,
 } from '../../components';
 
 import { Container } from './styles';
@@ -25,10 +24,13 @@ const CharacterDetailsRender = ({
   <Container>
     <Loading loading={loading} />
     <div className="character-detail-container">
-      <CharacterEditButton handleEditCharacter={handleEditCharacter} />
-      <CharacterHeader>{character.name || ''}</CharacterHeader>
-      <CharacterThumbnail
-        thumbnail={character.thumbnail}
+      <CharacterHeader handleEditCharacter={handleEditCharacter}>
+        {character.name || ''}
+      </CharacterHeader>
+
+      <ThumbnailPreview
+        className="thumbnail-preview"
+        thumbnailUrl={character.thumbnail}
         alt={character.name || ''}
       />
       <div className="character-content">

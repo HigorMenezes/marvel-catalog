@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { rgba } from 'polished';
 import media from 'styled-media-query';
 
 export const Container = styled.div`
   height: ${props => props.theme.navbar.height};
-  background-color: ${props => props.theme.color.red};
+  background-color: ${props => rgba(props.theme.color.red, 0.95)};
 
   display: flex;
   align-items: center;

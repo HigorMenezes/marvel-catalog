@@ -4,7 +4,6 @@ export const Container = styled.div`
   display: flex;
   align-content: center;
   justify-content: flex-end;
-  width: 100%;
   margin: 1rem 0;
 
   .edit-character {
@@ -29,6 +28,7 @@ export const Container = styled.div`
       font-size: 1.6rem;
       font-weight: 400;
       height: 100%;
+      white-space: nowrap;
     }
 
     .edit-icon-container {

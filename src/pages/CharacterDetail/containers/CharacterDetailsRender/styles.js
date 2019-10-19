@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const Container = styled.div`
   width: 100%;
@@ -13,6 +14,10 @@ export const Container = styled.div`
     justify-content: center;
     flex-direction: column;
     width: 100%;
+
+    .thumbnail-preview {
+      width: 100%;
+    }
 
     .character-content {
       width: 100%;
@@ -35,4 +40,16 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
   }
+
+  ${media.greaterThan('medium')`
+    .character-detail-container .thumbnail-preview {
+      width: 85%;
+    }
+  `};
+
+  ${media.greaterThan('large')`
+    .character-detail-container .thumbnail-preview {
+      width: 75%;
+    }
+  `};
 `;

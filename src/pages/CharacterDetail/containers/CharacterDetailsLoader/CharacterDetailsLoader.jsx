@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
+import { useSelector } from 'react-redux';
+
 import { GET_CHARACTER_BY_ID, GET_SERIES_BY_CHARACTER_ID } from './queries';
+import { combineOne } from '../../../../helpers/combineCharacters';
 import CharacterDetailsRender from '../CharacterDetailsRender';
 import { Container } from './styles';
 
 const CharacterDetailsLoader = ({ characterId }) => {
   const history = useHistory();
+  const characters = useSelector(state => state.characters);
   const [thereAreMoreSeries, setThereAreMoreSeries] = useState(true);
   const { data: characterData, loading: characterLoading } = useQuery(
     GET_CHARACTER_BY_ID,
@@ -63,7 +67,10 @@ const CharacterDetailsLoader = ({ characterId }) => {
         character={
           characterData &&
           characterData.characters &&
-          characterData.characters[0]
+          combineOne({
+            baseCharacter: characterData.characters[0],
+            replaceCharacters: characters.editedCharacters,
+          })
         }
         series={seriesData && seriesData.series}
         handleEditCharacter={() => handleEditCharacter(characterId)}
