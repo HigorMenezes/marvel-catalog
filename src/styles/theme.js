@@ -7,6 +7,7 @@ const theme = {
     white: '#fefefe',
     black: '#040404',
     lightGrey: '#efefef',
+    grey: '#999999',
     darkGrey: '#595959',
   },
 };

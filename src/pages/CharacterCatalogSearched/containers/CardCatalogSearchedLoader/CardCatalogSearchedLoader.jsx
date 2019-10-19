@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
 
-import { GET_ALL_CHARACTERS } from './queries';
+import { GET_ALL_CHARACTERS_BY_START_NAME } from './queries';
 import { CharacterCardList } from '../../../../components';
 import { Container } from './styles';
 
-const CardCatalogLoader = ({ offset }) => {
+const CardCatalogLoader = ({ offset, search }) => {
   const history = useHistory();
   const [thereAreMoreCharacters, setThereAreMoreCharacters] = useState(true);
 
@@ -14,11 +14,8 @@ const CardCatalogLoader = ({ offset }) => {
     data: charactersData,
     fetchMore,
     loading: charactersLoading,
-  } = useQuery(GET_ALL_CHARACTERS, {
-    variables: {
-      offset,
-      limit: 0,
-    },
+  } = useQuery(GET_ALL_CHARACTERS_BY_START_NAME, {
+    variables: { offset, limit: 0, where: { nameStartsWith: search } },
     notifyOnNetworkStatusChange: true,
   });
 

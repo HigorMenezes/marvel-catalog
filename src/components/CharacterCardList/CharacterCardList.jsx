@@ -1,14 +1,10 @@
 import React from 'react';
 
-import {
-  CharacterCard,
-  FetchMoreDataButton,
-  Loading,
-} from '../../../../components';
+import { CharacterCard, FetchMoreDataButton, Loading } from '..';
 
 import { Container } from './styles';
 
-const CardCatalogRender = ({
+const CharacterCardList = ({
   characters = [],
   loading,
   handleClickOnCard,
@@ -40,4 +36,4 @@ const CardCatalogRender = ({
   </Container>
 );
 
-export default CardCatalogRender;
+export default CharacterCardList;

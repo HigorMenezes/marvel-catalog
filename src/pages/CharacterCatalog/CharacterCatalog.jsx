@@ -1,17 +1,16 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { CardCatalogLoader } from './containers';
 
 import { Container } from './styles';
 
 const CharacterCatalog = () => {
-  const { search } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   return (
     <Container>
-      <CardCatalogLoader
-        offset={10}
-        search={new URLSearchParams(search).get('search_query')}
-      />
+      <CardCatalogLoader offset={10} />
     </Container>
   );
 };
