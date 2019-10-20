@@ -4,7 +4,7 @@ import { Container } from './styles';
 
 const Loading = ({ loading }) =>
   loading && (
-    <Container>
+    <Container data-testid="Loading">
       <div className="loader" />
     </Container>
   );

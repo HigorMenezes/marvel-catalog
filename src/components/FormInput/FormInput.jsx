@@ -16,12 +16,25 @@ const FormInput = ({
   errorMessage,
   rows,
 }) => (
-  <Container>
+  <Container data-testid="FormInput">
     <label htmlFor={id} className="label">
       {label}
       {(variant === 'input' && (
-        <>
-          <Input
+        <Input
+          id={id}
+          type={type}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={inputValue}
+          name={name}
+          disabled={inputDisabled}
+          placeholder={inputPlaceholder}
+          className={errorMessage && 'input-error'}
+        />
+      )) ||
+        (variant === 'textarea' && (
+          <TextArea
+            rows={rows}
             id={id}
             type={type}
             onChange={handleChange}
@@ -32,30 +45,12 @@ const FormInput = ({
             placeholder={inputPlaceholder}
             className={errorMessage && 'input-error'}
           />
-          {errorMessage && (
-            <span className="error-message">{errorMessage}</span>
-          )}
-        </>
-      )) ||
-        (variant === 'textarea' && (
-          <>
-            <TextArea
-              rows={rows}
-              id={id}
-              type={type}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={inputValue}
-              name={name}
-              disabled={inputDisabled}
-              placeholder={inputPlaceholder}
-              className={errorMessage && 'input-error'}
-            />
-            {errorMessage && (
-              <span className="error-message">{errorMessage}</span>
-            )}
-          </>
         ))}
+      {errorMessage && (
+        <span data-testid="ErrorMessage" className="error-message">
+          {errorMessage}
+        </span>
+      )}
     </label>
   </Container>
 );

@@ -3,9 +3,8 @@ import { FiEdit } from 'react-icons/fi';
 import { Container } from './styles';
 
 const CharacterEditButton = ({ handleEditCharacter }) => (
-  <Container>
+  <Container data-testid="CharacterEditButton">
     <button
-      data-testid="CharacterEditButton"
       type="button"
       className="edit-character"
       onClick={handleEditCharacter}

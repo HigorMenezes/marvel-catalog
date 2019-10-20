@@ -18,8 +18,12 @@ const Navbar = () => {
   }
 
   return (
-    <Container>
-      <Link to="/characters" className="logo-container">
+    <Container data-testid="Navbar">
+      <Link
+        data-testid="NavbarLink"
+        to="/characters"
+        className="logo-container"
+      >
         <svg width="130" height="52" className="large-icon">
           <path
             fill="#FEFEFE"
