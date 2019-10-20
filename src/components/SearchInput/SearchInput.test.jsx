@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../styles';
 import SearchInput from './SearchInput';
@@ -8,11 +8,11 @@ import SearchInput from './SearchInput';
 describe('SearchInput test', () => {
   const data = {
     value: 'value-test',
-    onChange: () => {},
-    onSubmit: () => {},
+    onChange: jest.fn(),
+    onSubmit: jest.fn(),
   };
 
-  it('should show render SearchInput component', () => {
+  it('should render SearchInput component', () => {
     const { getByTestId } = render(
       <ThemeProvider theme={theme}>
         <SearchInput {...data} />
@@ -35,5 +35,20 @@ describe('SearchInput test', () => {
         .item(0)
     ).not.toBeNull();
     expect(getByTestId('SearchInput').innerHTML).toMatch(data.value);
+  });
+
+  it('should click on submit button', () => {
+    const { getByTestId } = render(
+      <ThemeProvider theme={theme}>
+        <SearchInput {...data} />
+      </ThemeProvider>
+    );
+
+    fireEvent.submit(
+      getByTestId('SearchInput')
+        .getElementsByTagName('form')
+        .item(0)
+    );
+    expect(data.onSubmit).toHaveBeenCalledTimes(1);
   });
 });
