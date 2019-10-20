@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../styles';
 import CharacterCardList from './CharacterCardList';
@@ -14,8 +14,8 @@ describe('CharacterCardList test', () => {
     ],
     loading: false,
     thereAreMoreCharacters: false,
-    handleClickOnCard: () => {},
-    handleFetchMoreCharacters: () => {},
+    handleClickOnCard: jest.fn(),
+    handleFetchMoreCharacters: jest.fn(),
   };
 
   it('should show a list of character card', () => {
@@ -33,5 +33,45 @@ describe('CharacterCardList test', () => {
         character.thumbnail
       );
     });
+  });
+
+  it('should click on card', () => {
+    const { getAllByTestId } = render(
+      <ThemeProvider theme={theme}>
+        <CharacterCardList {...data} />
+      </ThemeProvider>
+    );
+
+    fireEvent.click(
+      getAllByTestId('CharacterCard')[0]
+        .getElementsByClassName('card')
+        .item(0)
+    );
+
+    expect(data.handleClickOnCard).toHaveBeenCalledTimes(1);
+  });
+
+  it('should display empty card list message', () => {
+    const newData = { ...data, characters: [] };
+    const { getByText } = render(
+      <ThemeProvider theme={theme}>
+        <CharacterCardList {...newData} />
+      </ThemeProvider>
+    );
+
+    expect(getByText('No data found')).not.toBeNull();
+  });
+
+  it('should call handleFetchMoreCharacters function', () => {
+    const newData = { ...data, thereAreMoreCharacters: true };
+    const { getByText } = render(
+      <ThemeProvider theme={theme}>
+        <CharacterCardList {...newData} />
+      </ThemeProvider>
+    );
+
+    fireEvent.click(getByText('Fetch more characters'));
+
+    expect(data.handleFetchMoreCharacters).toHaveBeenCalledTimes(1);
   });
 });
