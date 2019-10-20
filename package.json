@@ -57,5 +57,6 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.1.2",
     "prettier": "^1.18.2"
-  }
+  },
+  "homepage": "https://higormenezes1996.gitlab.io/marvel-catalog"
 }
