@@ -6,12 +6,12 @@ import { Navbar } from '../../components';
 import { Container } from './styles';
 
 const AppLayout = () => (
-  <Container>
+  <Container data-testid="AppLayout">
     <BrowserRouter>
-      <div className="navbar">
+      <div className="navbar" data-testid="navbar">
         <Navbar />
       </div>
-      <main className="content">
+      <main className="content" data-testid="main-content">
         <Routes />
       </main>
     </BrowserRouter>

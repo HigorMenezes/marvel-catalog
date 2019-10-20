@@ -11,6 +11,7 @@ const CustomButton = ({
   className,
 }) => (
   <Container
+    data-testid="CustomButton"
     type={buttonType}
     disabled={buttonDisabled}
     onClick={handleClick}

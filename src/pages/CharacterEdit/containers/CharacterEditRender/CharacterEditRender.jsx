@@ -19,7 +19,7 @@ const CharacterEditRender = ({
   };
 
   return (
-    <Container>
+    <Container data-testid="CharacterEditRender">
       <Loading loading={loading} />
       <Formik
         enableReinitialize

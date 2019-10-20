@@ -3,7 +3,7 @@ import React from 'react';
 import { Container } from './styles';
 
 const CharacterCard = ({ name, thumbnail, handleClickOnCard }) => (
-  <Container>
+  <Container data-testid="CharacterCard">
     <div className="card" onClick={handleClickOnCard}>
       <div className="card-image">
         <div

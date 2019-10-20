@@ -4,7 +4,7 @@ import { MdSearch } from 'react-icons/md';
 import { Container } from './styles';
 
 const SearchInput = ({ value, onChange, onSubmit }) => (
-  <Container>
+  <Container data-testid="SearchInput">
     <form className="input-container" onSubmit={onSubmit}>
       <input
         id="search-id"

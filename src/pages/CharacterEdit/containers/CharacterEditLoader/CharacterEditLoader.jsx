@@ -31,7 +31,7 @@ const CharacterEditLoader = ({ characterId }) => {
   }
 
   return (
-    <Container>
+    <Container data-testid="CharacterEditLoader">
       <CharacterEditRender
         loading={characterLoading || submitting}
         character={

@@ -10,7 +10,7 @@ import {
 } from './styles';
 
 const Typography = ({ variant, children }) => (
-  <Container>
+  <Container data-testid="Typography">
     {(variant === 'h1' && <Header1>{children}</Header1>) ||
       (variant === 'h2' && <Header2>{children}</Header2>) ||
       (variant === 'h3' && <Header3>{children}</Header3>) ||
