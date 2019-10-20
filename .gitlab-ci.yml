@@ -37,7 +37,7 @@ build_job:
   only:
     - master
 
-deploy_job:
+pages:
   stage: deploy
   script:
     - npm install --prod
