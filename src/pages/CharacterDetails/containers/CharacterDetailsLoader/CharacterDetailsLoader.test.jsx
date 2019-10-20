@@ -81,7 +81,7 @@ describe('Verify CharacterDetailsLoader layout', () => {
     expect(getByTestId('CharacterDetailsRender')).not.toBeNull();
   });
 
-  it('should render CharacterDetailsRender', async () => {
+  it('should click on EditCharacter button', async () => {
     const { getByTestId } = render(
       <Provider store={store}>
         <MockedProvider mocks={charactersMock} addTypename={false}>
