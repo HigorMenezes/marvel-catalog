@@ -18,7 +18,7 @@ const CharacterEditForm = ({
   errors,
   submitWithSuccess,
 }) => (
-  <Container>
+  <Container data-testid="CharacterEditForm">
     <form onSubmit={handleSubmit} className="form-controller">
       <FormInput
         variant="input"

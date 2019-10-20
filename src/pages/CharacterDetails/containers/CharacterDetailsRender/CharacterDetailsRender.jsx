@@ -21,7 +21,7 @@ const CharacterDetailsRender = ({
   thereAreMoreSeries,
   handleFetchMoreSeries,
 }) => (
-  <Container>
+  <Container data-testid="CharacterDetailsRender">
     <Loading loading={loading} />
     <div className="character-detail-container">
       <CharacterHeader handleEditCharacter={handleEditCharacter}>

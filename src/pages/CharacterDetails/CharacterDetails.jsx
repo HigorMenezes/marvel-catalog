@@ -6,10 +6,10 @@ import { CharacterDetailsLoader } from './containers';
 
 import { Container } from './styles';
 
-const CharacterDetail = () => {
+const CharacterDetails = () => {
   const { search } = useLocation();
   return (
-    <Container data-testid="CharacterDetail">
+    <Container data-testid="CharacterDetails">
       <PageTitle>Character Details</PageTitle>
       <CharacterDetailsLoader
         characterId={Number(new URLSearchParams(search).get('character_id'))}
@@ -18,4 +18,4 @@ const CharacterDetail = () => {
   );
 };
 
-export default CharacterDetail;
+export default CharacterDetails;

@@ -8,7 +8,7 @@ import { CharacterCardList } from '../../../../components';
 import { combine } from '../../../../helpers/combineCharacters';
 import { Container } from './styles';
 
-const CardCatalogLoader = ({ offset }) => {
+const CharacterCatalogLoader = ({ offset }) => {
   const history = useHistory();
   const characters = useSelector(state => state.characters);
   const [thereAreMoreCharacters, setThereAreMoreCharacters] = useState(true);
@@ -51,7 +51,7 @@ const CardCatalogLoader = ({ offset }) => {
   }
 
   return (
-    <Container>
+    <Container data-testid="CharacterCatalogLoader">
       <CharacterCardList
         characters={
           charactersData &&
@@ -69,4 +69,4 @@ const CardCatalogLoader = ({ offset }) => {
   );
 };
 
-export default CardCatalogLoader;
+export default CharacterCatalogLoader;

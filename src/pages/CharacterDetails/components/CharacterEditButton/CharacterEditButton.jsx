@@ -5,6 +5,7 @@ import { Container } from './styles';
 const CharacterEditButton = ({ handleEditCharacter }) => (
   <Container>
     <button
+      data-testid="CharacterEditButton"
       type="button"
       className="edit-character"
       onClick={handleEditCharacter}

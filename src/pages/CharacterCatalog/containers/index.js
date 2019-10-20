@@ -1,1 +1,1 @@
-export { default as CardCatalogLoader } from './CardCatalogLoader';
+export { default as CharacterCatalogLoader } from './CharacterCatalogLoader';

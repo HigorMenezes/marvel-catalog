@@ -4,7 +4,9 @@ import { Container } from './styles';
 
 const CharacterHeader = ({ children, handleEditCharacter }) => (
   <Container>
-    <header className="header">{children}</header>
+    <header className="header" data-testid="CharacterHeader">
+      {children}
+    </header>
     <CharacterEditButton handleEditCharacter={handleEditCharacter} />
   </Container>
 );

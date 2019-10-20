@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { CardCatalogLoader } from './containers';
+import { CharacterCatalogLoader } from './containers';
 import { PageTitle } from '../../components';
 
 import { Container } from './styles';
@@ -12,7 +12,7 @@ const CharacterCatalog = () => {
   return (
     <Container data-testid="CharacterCatalog">
       <PageTitle>Character Catalog</PageTitle>
-      <CardCatalogLoader offset={10} />
+      <CharacterCatalogLoader offset={10} />
     </Container>
   );
 };

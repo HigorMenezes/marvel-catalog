@@ -1,3 +1,3 @@
 export {
-  default as CardCatalogSearchedLoader,
-} from './CardCatalogSearchedLoader';
+  default as CharacterCatalogSearchedLoader,
+} from './CharacterCatalogSearchedLoader';

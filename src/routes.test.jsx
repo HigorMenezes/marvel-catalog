@@ -67,7 +67,7 @@ describe('Routes', () => {
         </Provider>
       </ThemeProvider>
     );
-    expect(getByTestId('CharacterDetail')).not.toBeNull();
+    expect(getByTestId('CharacterDetails')).not.toBeNull();
   });
 
   it('should render Character Editing Page by /edit endpoint ', () => {

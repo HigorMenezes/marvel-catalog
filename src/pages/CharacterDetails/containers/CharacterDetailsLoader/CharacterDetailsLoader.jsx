@@ -61,7 +61,7 @@ const CharacterDetailsLoader = ({ characterId }) => {
   }
 
   return (
-    <Container>
+    <Container data-testid="CharacterDetailsLoader">
       <CharacterDetailsRender
         loading={characterLoading || seriesLoading}
         character={

@@ -5,7 +5,7 @@ import { Typography, ThumbnailPreview } from '../../../../components';
 import { Container } from './styles';
 
 const CharacterSeries = ({ title, thumbnail, description }) => (
-  <Container>
+  <Container data-testid="CharacterSeries">
     <Typography variant="h3">{title}</Typography>
     <div className="series-content">
       <ThumbnailPreview

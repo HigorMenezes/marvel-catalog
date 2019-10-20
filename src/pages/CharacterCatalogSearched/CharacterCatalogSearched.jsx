@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { CardCatalogSearchedLoader } from './containers';
+import { CharacterCatalogSearchedLoader } from './containers';
 import { PageTitle } from '../../components';
 
 import { Container } from './styles';
@@ -14,8 +14,8 @@ const CharacterCatalogSearched = () => {
 
   return (
     <Container data-testid="CharacterCatalogSearched">
-      <PageTitle>Character Searched Catalog</PageTitle>
-      <CardCatalogSearchedLoader
+      <PageTitle>Character Catalog Researched</PageTitle>
+      <CharacterCatalogSearchedLoader
         offset={10}
         search={new URLSearchParams(search).get('search_query')}
       />

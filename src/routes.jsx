@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import {
   CharacterCatalog,
   CharacterCatalogSearched,
-  CharacterDetail,
+  CharacterDetails,
   CharacterEdit,
 } from './pages';
 
@@ -14,7 +14,7 @@ const Router = () => (
     <Route path="/" exact component={RedirectToCharacter} />
     <Route path="/characters" component={CharacterCatalog} />
     <Route path="/results" component={CharacterCatalogSearched} />
-    <Route path="/details" component={CharacterDetail} />
+    <Route path="/details" component={CharacterDetails} />
     <Route path="/edit" component={CharacterEdit} />
   </Switch>
 );

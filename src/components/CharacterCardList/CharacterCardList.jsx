@@ -11,7 +11,7 @@ const CharacterCardList = ({
   handleFetchMoreCharacters,
   thereAreMoreCharacters,
 }) => (
-  <Container>
+  <Container data-testid="CharacterCardList">
     <Loading loading={loading} />
     <div className="card-characters-list">
       {characters.map(({ name, thumbnail, id }) => (
