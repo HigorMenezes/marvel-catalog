@@ -7,7 +7,7 @@ import { Container } from './styles';
 
 const AppLayout = () => (
   <Container data-testid="AppLayout">
-    <BrowserRouter>
+    <BrowserRouter basename="/marvel-catalog">
       <div className="navbar" data-testid="navbar">
         <Navbar />
       </div>

@@ -1,0 +1,52 @@
+image: node:alpine
+
+variables:
+  PUBLIC_URL: /marvel-catalog
+
+cache:
+  paths:
+    - node_modules
+
+stages:
+  - lint
+  - test
+  - build
+  - deploy
+
+lint_job:
+  stage: lint
+  script:
+    - npm install
+    - npm run lint
+  only:
+    - master
+
+test_job:
+  stage: test
+  script:
+    - npm install
+    - npm run test
+  only:
+    - master
+
+build_job:
+  stage: build
+  script:
+    - npm install --prod
+    - npm run build
+  only:
+    - master
+
+deploy_job:
+  stage: deploy
+  script:
+    - npm install --prod
+    - npm run build
+    - cp build/index.html build/404.html
+    - mv public _public
+    - mv build public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
