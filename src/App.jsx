@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { Provider } from 'react-redux';
 import { marvelql } from './api';
-import store from './store';
+import { store } from './store';
 import { GlobalStyle, theme } from './styles';
 import { AppLayout } from './layout';
 

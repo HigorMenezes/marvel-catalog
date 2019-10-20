@@ -9,7 +9,7 @@ import { Container } from './styles';
 const CharacterDetail = () => {
   const { search } = useLocation();
   return (
-    <Container>
+    <Container data-testid="CharacterDetail">
       <PageTitle>Character Details</PageTitle>
       <CharacterDetailsLoader
         characterId={Number(new URLSearchParams(search).get('character_id'))}

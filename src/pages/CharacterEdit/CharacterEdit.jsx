@@ -7,7 +7,7 @@ import { Container } from './styles';
 const CharacterEdit = () => {
   const { search } = useLocation();
   return (
-    <Container>
+    <Container data-testid="CharacterEdit">
       <PageTitle>Character Editing</PageTitle>
       <CharacterEditLoader
         characterId={Number(new URLSearchParams(search).get('character_id'))}

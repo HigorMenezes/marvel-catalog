@@ -13,7 +13,7 @@ const CharacterCatalogSearched = () => {
   }, [search]);
 
   return (
-    <Container>
+    <Container data-testid="CharacterCatalogSearched">
       <PageTitle>Character Searched Catalog</PageTitle>
       <CardCatalogSearchedLoader
         offset={10}

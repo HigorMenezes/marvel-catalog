@@ -10,7 +10,7 @@ const CharacterCatalog = () => {
   }, []);
 
   return (
-    <Container>
+    <Container data-testid="CharacterCatalog">
       <PageTitle>Character Catalog</PageTitle>
       <CardCatalogLoader offset={10} />
     </Container>
