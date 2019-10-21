@@ -31,7 +31,13 @@ export const Container = styled.div`
 
   ${media.greaterThan('medium')`
     .series-content .series-thumbnail {
-      width: 75%;
+      width: 65%;
+    }
+  `};
+
+  ${media.greaterThan('large')`
+    .series-content .series-thumbnail {
+      width: 55%;
     }
   `};
 `;
