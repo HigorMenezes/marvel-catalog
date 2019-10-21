@@ -30,7 +30,7 @@ export const Container = styled.div`
 
   ${media.greaterThan('medium')`
     .form-controller .thumbnail-preview {
-      width: 75%;
+      width: 55%;
     }
   `};
 `;

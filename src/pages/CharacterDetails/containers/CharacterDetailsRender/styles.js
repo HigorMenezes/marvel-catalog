@@ -43,13 +43,13 @@ export const Container = styled.div`
 
   ${media.greaterThan('medium')`
     .character-detail-container .thumbnail-preview {
-      width: 85%;
+      width: 65%;
     }
   `};
 
   ${media.greaterThan('large')`
     .character-detail-container .thumbnail-preview {
-      width: 75%;
+      width: 55%;
     }
   `};
 `;
