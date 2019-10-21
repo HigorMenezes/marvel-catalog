@@ -33,7 +33,7 @@ build_job:
   stage: build
   script:
     - npm install --prod
-    - npm run build
+    - NODE_ENV=production npm run build
   only:
     - master
 
@@ -41,7 +41,7 @@ pages:
   stage: deploy
   script:
     - npm install --prod
-    - npm run build
+    - NODE_ENV=production npm run build
     - cp build/index.html build/404.html
     - mv public _public
     - mv build public
